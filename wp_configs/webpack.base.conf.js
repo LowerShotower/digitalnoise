@@ -116,7 +116,7 @@ function generateHtmlPlugins(templateDir) {
       hash: false,
       filename: `${name}.html`,
       template: path.resolve(PATHS.src, `${templateDir}/${name}.${extension}`),
-      inject: true,
+      inject: false,
     })
   })
 }
