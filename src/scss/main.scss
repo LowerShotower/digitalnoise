@@ -1,0 +1,410 @@
+@import "utils/reset";
+@import "utils/fonts";
+@import "utils/mixins";
+@import "utils/subgrid";
+@import "chroma";
+@import "typey";
+@import "./typey-chroma-kss/init";
+@import "utils/vars";
+
+html {
+  @include define-type-sizing;
+}
+
+p,
+h2,
+h3,
+h5 {
+  @include typeface(avenir);
+}
+
+
+
+h5 {
+  @include typeset(header-main);
+  font-size: getVw(22px, 1920px);
+  line-height: 100%;
+}
+
+h2 {
+  @include typeset(header-main);
+  font-size: getVw(92px, 1920px);
+  line-height: 100%;
+}
+
+.page-wrapper {
+  display: grid;
+  grid-template-columns: getVw(35px, $desktopWidth) auto getVw(35px, $desktopWidth);
+  grid-template-rows: auto;
+  grid-template-areas:
+    ". page-header ."
+    "page-content page-content page-content"
+    ". page-footer .";
+  margin: 0 auto;
+  max-width: $desktopWidth;
+}
+
+.page-header {
+  grid-area: page-header;
+  @include flex(row, nowrap, space-between, center);
+  padding: 24px 0;
+}
+
+.page-content {
+  grid-area: page-content;
+  display: grid;
+  width: 100%;
+  grid-template-columns: getP(35px, $desktopWidth) getP(122px, $desktopWidth) getP(1277px, $desktopWidth) getP(72px, $desktopWidth) getP(114px, $desktopWidth) 1fr getP(57px, $desktopWidth) getP(211px, $desktopWidth) getP(35px, $desktopWidth);
+  grid-template-rows: auto auto 134px auto auto;
+  grid-template-areas:
+    " page-slider page-slider page-slider page-slider page-slider page-slider page-slider page-slider  ."
+    ". about about about . . . . ."
+    ". . . . . . . . ."
+    ". capabilities capabilities capabilities . . . . ."
+    ". . flow flow flow flow flow . ."
+    ". team team team team team team . . ";
+}
+
+//navigation
+.main-nav {
+  @include flex(row, nowrap);
+  @include typeface(avenir);
+  @include typeset(nav);
+  
+  & .nav-item {
+    padding: 5px 16px;
+    
+    &-link {
+      color: color(nav-link);
+      
+      &:hover {
+        color: color(nav-link-active);
+      }
+    }
+  }
+}
+
+.slogan {
+  max-width: 290px;
+  
+  &__text {
+    @include typeface(avenir);
+    @include typeset(slogan);
+  }
+}
+
+.page-slider {
+  grid-area: page-slider;
+  position: relative;
+}
+
+.page-slider__description {
+  position: absolute;
+  top: 50%;
+  @include typeface(avenir);
+  @include typeset(header-xxxl);
+  text-transform: uppercase;
+  font-size: getVw(525px, $desktopWidth);
+  color: color(dn-alt, text);
+}
+
+
+.about {
+  grid-area: about;
+  display: grid;
+  grid-template-columns: getP(122px, $aboutWidth) 1fr getP(482px, $aboutWidth) getP(515px, $aboutWidth);
+  grid-template-rows: auto auto auto getVw(150px, $desktopWidth);
+  grid-auto-rows: minmax(10px, auto);
+  background: color(white);
+  position: relative;
+  top: -20px;
+}
+
+.about__title_size_small {
+  grid-area: 1/4/2/5;
+  justify-self: end;
+  padding: 20px 30px;
+  
+}
+
+.about__graphic-dot {
+  grid-area: 2/1/3/2;
+  width: 100%;
+}
+
+.about__title_type_main {
+  grid-area: 2/3/3/4;
+  margin-bottom: getP(140px, 480px);
+}
+
+.about__description {
+  grid-area: 3/3/4/5;
+  @include flex(row, nowrap);
+
+  & .description__text:first-of-type {
+    margin-right: getP(120px, 920px);
+  }
+  & .description__text:last-of-type {
+    margin-right: getP(81px, 920px);
+  }
+}
+
+.about__graphic-line {
+  grid-area: 5/1/6/5;
+  background: color(black);
+  height: getVw(212px, $desktopWidth);
+  margin-right: getP(290px, $aboutWidth);
+}
+
+.capabilities {
+  grid-area: capabilities;
+  display: grid;
+  grid-template-columns: 0 getP(122px, $capWidth) getP(354px, $capWidth) getP(236px, $capWidth) getP(689px, $capWidth) getP(72px, $capWidth);
+  grid-template-rows: auto auto auto getVw(150px, $desktopWidth);
+  grid-auto-rows: minmax(10px, auto);
+}
+
+.capabilities__title {
+  grid-area: 1/4/2/6;
+  margin-bottom: getP(210px, 1480px);
+}
+
+.capabilities__graphic-line {
+  grid-area: 1/6/5/7;
+  background: black;
+  height: getVw(656px, $desktopWidth);
+}
+
+.capabilities__description {
+  grid-area: 7/4/8/6;
+  max-width: 587px;
+  
+  & .description__text {
+    margin-bottom: 40px;
+  }
+}
+
+.capabilities__description_em {
+  grid-area: 2/2/3/4;
+  max-width: 473px;
+  font-style: italic;
+  line-height: 140%;
+  font-size: getVw(30px,1920px);
+}
+
+.capabilities__types {
+  grid-area: 2/5/6/6;
+  max-width: 480px;
+}
+
+.types{
+  &__title{
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+}
+
+
+.flow {
+  grid-area: flow;
+  margin-bottom: 280px;
+}
+
+.steps-block {
+  @include flex(row, wrap);
+}
+
+.steps-item {
+  display: flex;
+  width: 100%;
+  
+  .steps-item__inner-wrapper {
+    display: grid;
+    grid-auto-rows: minmax(20px, auto);
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto auto;
+    grid-template-areas:
+      ". image ."
+      "title index index"
+      ". description .";
+    max-width: 700px;
+  }
+  
+  &:nth-of-type(2n+1) {
+    justify-content: flex-start;
+  }
+  
+  &:nth-of-type(2n) {
+    justify-content: flex-end;
+  }
+}
+
+.steps-item__title {
+  grid-area: title;
+  width: 230px;
+}
+
+.steps-item__image {
+  grid-area: image;
+  justify-self: center;
+}
+
+.steps-item__description {
+  grid-area: description;
+  max-width: 400px;
+}
+
+.steps-item__index {
+  grid-area: index;
+  justify-self: end;
+}
+
+.team {
+  grid-area: team;
+  display: grid;
+  width: 100%;
+  grid-template-columns: getP(475px, $teamWidth) getP(924px, $teamWidth) 1fr;
+}
+
+.team__title {
+  grid-area: 1/2/2/3;
+}
+
+.team__description {
+  grid-area: 2/2/3/3;
+}
+
+.team__members-block {
+  grid-area: 3/1/4/4;
+  position: relative;
+}
+
+.members-block__title {
+  position: absolute;
+  transform: translateX(75px) rotate(90deg);
+  top: 50%;
+  right: 0;
+  width: 150px;
+}
+
+.members-block__members {
+  width: getP(1400px, $teamWidth);
+}
+
+.members__inner-wrapper {
+  
+  @include flex(row, wrap);
+  margin: 0 getP(-40px, 1400px) 0px;
+  // margin-right: getP(-80px,1400px);
+}
+
+.members__members-item {
+  width: getColWidthInPercents(3, 40px, 1400px);
+  margin: 0 getP(40px, 1400px) getP(40px, 1400px);
+}
+
+.page-footer {
+  grid-area: page-footer;
+  
+  &__info-block {
+    @include flex(row, nowrap, space-between, center);
+  }
+}
+
+.button {
+  padding: 20px 30px;
+  color: color(blue);
+  background: none;
+}
+
+.offer-block {
+  display: flex;
+  width: getP(1400px, 1840px);
+  
+  &__column {
+    width: 50%;
+  }
+  
+  &__promo-block {
+    @include flex (column, nowrap);
+    
+    & .offer-block__text {
+      max-width: 260px;
+    }
+    
+    & .offer-block__button {
+      align-self: flex-end;
+      // width: getP(280px, 700px);
+      max-width: 280px;
+    }
+  }
+  
+  &__request-block {
+    
+    & .offer-block__text {
+      max-width: 440px;
+      margin-right: getP(20px, 700px);
+    }
+  }
+}
+
+.social-block {
+  @include flex(row, wrap);
+  align-items: center;
+  
+  &__copyright {
+    margin-right: 10px;
+  }
+}
+
+.social-list {
+  @include flex(row, wrap);
+  
+  &__item {
+    position: relative;
+    padding: 10px;
+    
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 1px;
+      height: 10px;
+      margin-top: -5px;
+      background: color(black);
+    }
+  }
+}
+
+$social-names: ("be", 2px),
+("dribbble", -24px),
+("linkedin", -50px);
+
+@each $item in $social-names {
+  .social-link.#{nth($item, 1)} {
+    background: url('../img/social-icons.png') nth($item, 2) 0 no-repeat;
+    display: block;
+    width: 30px;
+    height: 22px;
+  }
+}
+
+
+@media(min-width: $desktopWidth) {
+  .page-slider__description {
+    font-size: 525px;
+  }
+  
+  .about__graphic-line {
+    height: 212px;
+  }
+  
+  .about {
+    grid-template-rows: auto auto auto getVw(150px, $desktopWidth);
+  }
+}
+
+@media(min-width: $tabletWidth) {}
+
+@media (min-width: $phoneWidth) {}

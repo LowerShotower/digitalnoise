@@ -1,0 +1,55 @@
+@function rem($pixels, $context: $mainFontSize) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}
+
+@function getColWidthInPercents($colNumber, $gapSize, $total) {
+  // $colWidth: ($total - $gapSize * ($colNumber - 1)) / $colNumber;
+  $colWidth: ($total - $gapSize * ($colNumber * 2)) / $colNumber;
+  
+  @return percentage($colWidth/$total);
+}
+
+@function getP($elementSize, $containerSize) {
+  @return percentage($elementSize/$containerSize);
+}
+
+
+@function getVw($elementSize, $screenSize) {
+  $onePercentInPixels: ($screenSize*.01);
+  @return ($elementSize/$onePercentInPixels) * 1vw;
+}
+
+
+@mixin flex($direction, $wrap:null, $justify-content:null, $align-items:null, $align-content:null) {
+  display: flex;
+  flex-direction: $direction;
+
+  @if ($wrap) {
+    flex-wrap: $wrap;
+  }
+
+  @if ($justify-content) {
+    justify-content: $justify-content;
+  }
+
+  @if ($align-items) {
+    align-items: $align-items;
+  }
+
+  @if ($align-content) {
+    align-content: $align-content;
+  }
+}
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}

@@ -1,0 +1,65 @@
+
+$chroma: define-default-color-scheme('default', 'The site\'s main colors. Can be used to define colors in other color schemes.');
+
+$chroma: add-colors((
+  black:                  #000,
+  grey-dark:              #666,
+  'grey':                 #999,
+  grey-light:             #ccc,
+  grey-extra-light:       #eee,
+  white:                  #fff,
+
+  blue:                   #1234f5,
+  red:                    #c00,
+  yellow:                 #fd0,
+));
+
+// Define color names for functional uses.
+$chroma: define-color-scheme('dn', 'Colors used by functional parts of the design.');
+$chroma: add-colors('dn', (
+  // Colors used in the main content area.
+  text:                   'black',
+
+  link:                   'blue',
+  link-visited:           'blue',
+  link-active:            'red',
+
+  nav-link:                   'black',
+  nav-link-visited:           'blue',
+  nav-link-active:            'blue', 
+
+  border:                 'grey-light',
+
+  button:                 'text',
+  button-disabled:        'grey',
+
+  mark-bg:                'yellow',
+));
+
+$chroma: define-color-scheme('dn-alt', 'Colors used by functional parts of the design.');
+$chroma: add-colors('dn-alt', (
+  // Colors used in the main content area.
+  text:                   'white',
+
+  button:                 'text',
+  button-disabled:        'grey',
+
+));
+
+$chroma-active-scheme: 'dn';
+
+
+// sass-lint:disable indentation, no-color-keywords, no-color-hex
+
+// Colors
+//
+// Use the `color()` function to add colors to CSS properties. To learn more,
+// [read the Chroma documentation](http://johnalbin.github.io/chroma/).
+//
+// Markup: chroma.twig
+//
+// Weight: -1
+//
+// Style guide: sass.colors
+
+// Define the default color scheme's color names.

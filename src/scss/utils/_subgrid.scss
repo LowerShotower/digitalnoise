@@ -1,0 +1,17 @@
+:root {
+  --grid-columns: 10; /* Global grid size*/
+  --grid-gap-size: 10px; /* Grid gap size */
+}
+.grid {
+  display: grid;
+  grid-gap: var(--grid-gap-size);
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+}
+.subgrid {
+  --grid-self-span: 5; /* Block size on global grid. Set grid-column value here! */
+  --subgrid-columns: calc(var(--grid-columns) - var(--grid-self-span)); /* Doesn't work in Firefox 56 and below. https://bugzilla.mozilla.org/show_bug.cgi?id=1350069 */
+  display: grid;
+  grid-gap: var(--grid-gap-size);
+  grid-column: span var(--grid-self-span);
+  grid-template-columns: repeat(var(--subgrid-columns), 1fr);
+}

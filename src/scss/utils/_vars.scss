@@ -1,0 +1,38 @@
+//colors 
+$lightColor : #f8f8f8;
+$darkColor:#333333;
+$whiteColor: #ffffff;
+$mainFontColor : #727272;
+$mainFontColorReverse:#999999;
+$secondFontColor : #222222;
+$secondFontColorHover:#00c8c8;
+//shadows
+$mainShadow: 0 0 24px rgba($color: #000000, $alpha: 0.14);
+$altShadow:0 17px 24px rgba($color: #000000, $alpha: 0.14);
+//typography
+$mainFont: 'Montserrat',
+Helvetica,
+Arial,
+sans-serif;
+$secondaryFont: 'Myriad Pro',
+Helvetica,
+Arial,
+;
+//size
+$mainFontSize : 14px;
+$mainFontWeight: 300;
+$mainLineHeight : 1.4;
+$menuFontSize : 13px;
+$menuFontWeight : 400;
+$menuLineHeight : 1.4;
+//conteiners' size
+$aboutWidth: 1470px;
+$capWidth: 1470px;
+$teamWidth: 1639px;
+
+//screen size
+$desktopWidth : 1920px;
+$smDesktopWidth : 980px;
+$tabletWidth : 700px;
+$phoneWidth : 480px;
+$smPhoneWidth : 320px;
