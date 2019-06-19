@@ -40,7 +40,8 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: 'assets/img/[name].[ext]'
+          name: 'assets/img/[name].[ext]',
+          publicPath:'../../'
         }
       },
       {
@@ -48,7 +49,8 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'file-loader',
         options: {
-          name: `${PATHS.assets}/fonts/[name].[ext]`
+          name: `${PATHS.assets}/fonts/[name].[ext]`,
+          publicPath:'../../'
         }
       }, {
         test: /\.scss$/,
