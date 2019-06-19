@@ -29,7 +29,7 @@ module.exports = {
   output: {
     filename: `${PATHS.assets}/js/[name].js`,
     path: PATHS.dist,
-    publicPath: '/'
+    publicPath: ''
   },
   module: {
     rules: [{
@@ -116,7 +116,7 @@ function generateHtmlPlugins(templateDir) {
       hash: false,
       filename: `${name}.html`,
       template: path.resolve(PATHS.src, `${templateDir}/${name}.${extension}`),
-      inject: false,
+      inject: true,
     })
   })
 }
