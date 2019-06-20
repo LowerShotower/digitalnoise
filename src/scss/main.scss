@@ -18,7 +18,10 @@ h5 {
   @include typeface(avenir);
 }
 
-
+p {
+  font-size: getVw(19px, 1920px);
+  line-height: 160%;
+}
 
 h5 {
   @include typeset(header-main);
@@ -46,7 +49,7 @@ h2 {
 
 .page-header {
   grid-area: page-header;
-  @include flex(row, nowrap, space-between, center);
+  @include flex(row, wrap, space-between, center);
   padding: 24px 0;
 }
 
@@ -91,6 +94,10 @@ h2 {
     @include typeface(avenir);
     @include typeset(slogan);
   }
+}
+
+.page-header__logo {
+  max-width: 400px;
 }
 
 .page-slider {
@@ -140,10 +147,11 @@ h2 {
 .about__description {
   grid-area: 3/3/4/5;
   @include flex(row, nowrap);
-
+  
   & .description__text:first-of-type {
     margin-right: getP(120px, 920px);
   }
+  
   & .description__text:last-of-type {
     margin-right: getP(81px, 920px);
   }
@@ -151,7 +159,7 @@ h2 {
 
 .about__graphic-line {
   grid-area: 5/1/6/5;
-  background: color(black);
+  background: url(../img/graphic-line.png) 0 0 / contain no-repeat;
   height: getVw(212px, $desktopWidth);
   margin-right: getP(290px, $aboutWidth);
 }
@@ -159,6 +167,7 @@ h2 {
 .capabilities {
   grid-area: capabilities;
   display: grid;
+  position: relative;
   grid-template-columns: 0 getP(122px, $capWidth) getP(354px, $capWidth) getP(236px, $capWidth) getP(689px, $capWidth) getP(72px, $capWidth);
   grid-template-rows: auto auto auto getVw(150px, $desktopWidth);
   grid-auto-rows: minmax(10px, auto);
@@ -166,18 +175,19 @@ h2 {
 
 .capabilities__title {
   grid-area: 1/4/2/6;
-  margin-bottom: getP(210px, 1480px);
+  margin-bottom: getP(300px, 1480px);
 }
 
 .capabilities__graphic-line {
   grid-area: 1/6/5/7;
-  background: black;
+  background: url(../img/graphic-line2.png) 0 0 / contain no-repeat;
   height: getVw(656px, $desktopWidth);
 }
 
 .capabilities__description {
-  grid-area: 7/4/8/6;
+  grid-area: 5/4/6/6;
   max-width: 587px;
+  max-width: getP(570px, 920px);
   
   & .description__text {
     margin-bottom: 40px;
@@ -188,19 +198,45 @@ h2 {
   grid-area: 2/2/3/4;
   max-width: 473px;
   font-style: italic;
-  line-height: 140%;
-  font-size: getVw(30px,1920px);
+  line-height: 160%;
+
+  & p {
+    font-size: getVw(28px, 1920px);
+  }
 }
 
 .capabilities__types {
   grid-area: 2/5/6/6;
   max-width: 480px;
+  margin-bottom: getP(200px, 700px);
 }
 
-.types{
-  &__title{
+.types {
+  &__title {
     text-transform: uppercase;
-    letter-spacing: 4px;
+    font-size: getVw(19px, 1920px);
+    line-height: 200%;
+    letter-spacing: 1em;
+    margin-bottom: getP(140px, 700px);
+  }
+  
+  &__list-item {
+    position: relative;
+    @include flex(row, nowrap);
+    margin-bottom: getP(40px, 700px);
+    @include typeface(avenir);
+    font-size: getVw(33px, 1920px);
+    line-height: 100%;
+    font-weight: 500;
+    
+    &::before {
+      content: '';
+      position: relative;
+      margin-right: getP(34px, 700px);
+      width: getP(19px, 424px);
+      // padding-top:getP(28px,424px);
+      background: url(../img/plus.png) 0 0 / contain no-repeat;
+    }
   }
 }
 

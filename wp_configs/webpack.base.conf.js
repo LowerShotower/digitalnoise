@@ -87,7 +87,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}/css/[name].css`,
+      filename: `${PATHS.assets}/csss/[name].css`,
     }),
     new CopyWebpackPlugin([{
         from: `${PATHS.src}/img`,
