@@ -14,6 +14,7 @@ html {
 p,
 h2,
 h3,
+h4,
 h5 {
   @include typeface(avenir);
 }
@@ -23,17 +24,24 @@ p {
   line-height: 160%;
 }
 
+h2 {
+  @include typeset(header-main);
+  font-size: getVw(92px, 1920px);
+  line-height: 100%;
+}
+
+h4 {
+  font-weight: 500;
+  font-size: getVw(33px, 1920px);
+  line-height: 100%;
+}
+
 h5 {
   @include typeset(header-main);
   font-size: getVw(22px, 1920px);
   line-height: 100%;
 }
 
-h2 {
-  @include typeset(header-main);
-  font-size: getVw(92px, 1920px);
-  line-height: 100%;
-}
 
 .page-wrapper {
   display: grid;
@@ -249,6 +257,7 @@ h2 {
   grid-template-columns: 0 getP(122px, $capWidth) getP(354px, $capWidth) getP(236px, $capWidth) getP(689px, $capWidth) getP(72px, $capWidth);
   grid-template-rows: auto auto auto getVw(150px, $desktopWidth);
   grid-auto-rows: minmax(10px, auto);
+  margin-bottom: getP(200px, 1480px)
 }
 
 .capabilities__title {
@@ -264,11 +273,15 @@ h2 {
 
 .capabilities__description {
   grid-area: 5/4/6/6;
-  max-width: 587px;
+  max-width: 590px;
   max-width: getP(570px, 920px);
   
   & .description__text {
-    margin-bottom: 40px;
+    margin-bottom: getP(80px, 590px);
+    
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -321,27 +334,42 @@ h2 {
 
 .flow {
   grid-area: flow;
-  margin-bottom: 280px;
+  display: grid;
+  margin-bottom: getP(280px, 1480px);
+  grid-template-columns: getP(354px, 1492px) auto;
+  grid-template-areas:
+    '. title'
+    'steps steps';
+}
+
+.flow__title {
+  grid-area: title;
+  width: getP(840px, 1150px);
+  margin-bottom: getP(200px, 1480px);
 }
 
 .steps-block {
+  grid-area: steps;
   @include flex(row, wrap);
 }
 
 .steps-item {
   display: flex;
   width: 100%;
+  margin-bottom: 34px;
   
   .steps-item__inner-wrapper {
     display: grid;
     grid-auto-rows: minmax(20px, auto);
     grid-template-rows: auto auto auto;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: getP(245px, 700px) auto auto;
     grid-template-areas:
       ". image ."
       "title index index"
       ". description .";
     max-width: 700px;
+    // width:getP(700px, 1480px);
+    min-width: 300px;
   }
   
   &:nth-of-type(2n+1) {
@@ -355,22 +383,29 @@ h2 {
 
 .steps-item__title {
   grid-area: title;
-  width: 230px;
+  width: getP(230px, 700px);
+  
 }
 
 .steps-item__image {
   grid-area: image;
   justify-self: center;
+  width: 48%;
 }
 
 .steps-item__description {
   grid-area: description;
   max-width: 400px;
+  
+  .description__text {
+    // font-size: ;
+  }
 }
 
 .steps-item__index {
   grid-area: index;
   justify-self: end;
+  color: color(blue);
 }
 
 .team {
@@ -382,23 +417,49 @@ h2 {
 
 .team__title {
   grid-area: 1/2/2/3;
+  margin-bottom: getP(130px, $teamWidth);
 }
 
 .team__description {
   grid-area: 2/2/3/3;
+  margin-bottom: getP(130px, $teamWidth);
+  @include flex(row, nowrap);
+  
+  & .description__text {
+    &:first-of-type {
+      margin-right: getP(80px, 918px);
+    }
+  }
 }
 
 .team__members-block {
   grid-area: 3/1/4/4;
   position: relative;
+  margin-bottom: getP(140px, $teamWidth);
 }
 
 .members-block__title {
   position: absolute;
-  transform: translateX(75px) rotate(90deg);
+  transform: translateX(50%) rotate(90deg);
   top: 50%;
   right: 0;
-  width: 150px;
+  // width: 300px;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: getVw(14px, 1920px);
+  letter-spacing: .7em;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    background: black;
+    height: 0.5px;
+    width: 80%;
+    top: 300%;
+    left: 0;
+    margin-left: 10%;
+    
+  }
 }
 
 .members-block__members {
@@ -415,6 +476,26 @@ h2 {
 .members__members-item {
   width: getColWidthInPercents(3, 40px, 1400px);
   margin: 0 getP(40px, 1400px) getP(40px, 1400px);
+}
+
+.members-item {
+  &__image {
+    margin-bottom: getP(30px, 440px);
+  }
+  
+  & .description {
+    
+    &__title {
+      margin-bottom: getP(15px, 440px);
+      font-weight: 400;
+    }
+    
+    &__text {
+      color: color('grey');
+      font-weight: 400;
+    }
+  }
+  
 }
 
 .page-footer {
