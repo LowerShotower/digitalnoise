@@ -20,25 +20,25 @@ h5 {
 }
 
 p {
-  font-size: getVw(19px, 1920px);
+  font-size: getVw(19px, $desktopWidth);
   line-height: 160%;
 }
 
 h2 {
   @include typeset(header-main);
-  font-size: getVw(92px, 1920px);
+  font-size: getVw(92px, $desktopWidth);
   line-height: 100%;
 }
 
 h4 {
   font-weight: 500;
-  font-size: getVw(33px, 1920px);
+  font-size: getVw(33px, $desktopWidth);
   line-height: 100%;
 }
 
 h5 {
   @include typeset(header-main);
-  font-size: getVw(22px, 1920px);
+  font-size: getVw(22px, $desktopWidth);
   line-height: 100%;
 }
 
@@ -50,7 +50,7 @@ h5 {
   grid-template-areas:
     ". page-header ."
     "page-content page-content page-content"
-    ". page-footer .";
+    "page-footer page-footer page-footer";
   margin: 0 auto;
   max-width: $desktopWidth;
 }
@@ -65,15 +65,15 @@ h5 {
   grid-area: page-content;
   display: grid;
   width: 100%;
-  grid-template-columns: getP(35px, $desktopWidth) getP(122px, $desktopWidth) getP(1277px, $desktopWidth) getP(72px, $desktopWidth) getP(114px, $desktopWidth) 1fr getP(57px, $desktopWidth) getP(211px, $desktopWidth) getP(35px, $desktopWidth);
+  grid-template-columns: getP(40px, $desktopWidth) getP(135px, $desktopWidth) getP(1481px - 135px, $desktopWidth) getP(180px, $desktopWidth) getP(180px, $desktopWidth) getP(40px, $desktopWidth) ;
   // grid-template-rows: auto auto 134px auto auto;
   grid-template-areas:
-    " page-slider page-slider page-slider page-slider page-slider page-slider page-slider page-slider  ."
-    ". about about about . . . . ."
-    ". . . . . . . . ."
-    ". capabilities capabilities capabilities . . . . ."
-    ". . flow flow flow flow flow . ."
-    ". team team team team team team . . ";
+    " page-slider page-slider page-slider page-slider page-slider  ."
+    ". about about  . . ."
+    ". . . . .  ."
+    ". capabilities capabilities  capabilities capabilities  ."
+    ". . flow flow   . ."
+    ". team team team . . ";
 }
 
 
@@ -83,9 +83,10 @@ h5 {
   display: block;
   width: 40px;
   height: 40px;
-  vertical-align: middle;
   background-color: rgba(255, 255, 255, 0.1);
   border: 2px solid color(black);
+  border-left: 2px solid transparent;
+  border-top: 2px solid transparent;
   cursor: pointer;
   
   
@@ -204,19 +205,20 @@ h5 {
 .about {
   grid-area: about;
   display: grid;
-  grid-template-columns: getP(122px, $aboutWidth) 1fr getP(482px, $aboutWidth) getP(515px, $aboutWidth);
+  grid-template-columns: getP(76px, $aboutWidth) getP(480px - 76px, $aboutWidth) getP(481px, $aboutWidth) getP(440px, $aboutWidth) getP(81px, $aboutWidth);
   grid-template-rows: auto auto auto getVw(150px, $desktopWidth);
   grid-auto-rows: minmax(10px, auto);
   background: color(white);
   position: relative;
-  top: -20px;
-  margin-bottom: getP(50px, 1920px);
+  top: getVw(-20px,$desktopWidth);
+  margin-bottom: (50px, $desktopWidth);
 }
 
 .about__title_size_small {
-  grid-area: 1/4/2/5;
+  grid-area: 1/4/2/6;
   justify-self: end;
-  padding: 20px 30px;
+  padding:  getP(20px, $aboutWidth)  getP(30px, $aboutWidth);
+  margin-bottom: getP(155px, 521px );
   
 }
 
@@ -233,48 +235,64 @@ h5 {
 .about__description {
   grid-area: 3/3/4/5;
   @include flex(row, nowrap);
-  
+  width:100%;
+  justify-content: space-between;
+  & .description__text{
+    width:getP(440px, 921px);
+  }
   & .description__text:first-of-type {
-    margin-right: getP(120px, 920px);
+    padding-right: getP(70px, 921px);
   }
   
   & .description__text:last-of-type {
-    margin-right: getP(81px, 920px);
   }
 }
 
 .about__graphic-line {
   grid-area: 5/1/6/5;
-  background: url(../img/graphic-line.png) 0 0 / contain no-repeat;
+  background: url(../img/graphic-line.png) 0 0 / cover no-repeat;
   height: getVw(212px, $desktopWidth);
-  margin-right: getP(290px, $aboutWidth);
+  margin-bottom: getP(145px, $aboutWidth);
+  width:getP(1180px,1481px);
 }
 
 .capabilities {
   grid-area: capabilities;
   display: grid;
   position: relative;
-  grid-template-columns: 0 getP(122px, $capWidth) getP(354px, $capWidth) getP(236px, $capWidth) getP(689px, $capWidth) getP(72px, $capWidth);
+  grid-template-columns:  getP(480px, $capWidth) getP(221px, $capWidth) getP(480px, $capWidth) getP(220px, $capWidth) getP(81px, $capWidth) getP(360px, $capWidth) ;
   grid-template-rows: auto auto auto getVw(150px, $desktopWidth);
   grid-auto-rows: minmax(10px, auto);
-  margin-bottom: getP(200px, 1480px)
+  margin-bottom: getP(200px, 1480px);
 }
 
 .capabilities__title {
-  grid-area: 1/4/2/6;
-  margin-bottom: getP(300px, 1480px);
+  grid-area: 1/2/2/4;
+  margin-bottom: getP(215px, 701px);
 }
 
 .capabilities__graphic-line {
-  grid-area: 1/6/5/7;
+  grid-area: 1/5/5/6;
   background: url(../img/graphic-line2.png) 0 0 / contain no-repeat;
   height: getVw(656px, $desktopWidth);
 }
 
+.capabilities__graphic-line-2 {
+  position: absolute;
+  right: 100%;
+  width: getVw(40px,$desktopWidth);
+  grid-area: 5/1/6/2;
+  height: getVw(790px,$desktopWidth);
+  & img {
+    object-fit: cover;
+    height:100%;
+  }
+}
+
 .capabilities__description {
-  grid-area: 5/4/6/6;
+  grid-area: 5/2/6/4;
   max-width: 590px;
-  max-width: getP(570px, 920px);
+  max-width: getP(570px, 700px);
   
   & .description__text {
     margin-bottom: getP(80px, 590px);
@@ -286,18 +304,18 @@ h5 {
 }
 
 .capabilities__description_em {
-  grid-area: 2/2/3/4;
+  grid-area: 2/1/3/2;
   max-width: 473px;
   font-style: italic;
   line-height: 160%;
   
   & p {
-    font-size: getVw(28px, 1920px);
+    font-size: getVw(28px, $desktopWidth);
   }
 }
 
 .capabilities__types {
-  grid-area: 2/5/6/6;
+  grid-area: 2/3/6/4;
   max-width: 480px;
   margin-bottom: getP(200px, 700px);
 }
@@ -305,7 +323,7 @@ h5 {
 .types {
   &__title {
     text-transform: uppercase;
-    font-size: getVw(19px, 1920px);
+    font-size: getVw(19px, $desktopWidth);
     line-height: 200%;
     letter-spacing: 1em;
     margin-bottom: getP(140px, 700px);
@@ -316,7 +334,7 @@ h5 {
     @include flex(row, nowrap);
     margin-bottom: getP(40px, 700px);
     @include typeface(avenir);
-    font-size: getVw(33px, 1920px);
+    font-size: getVw(33px, $desktopWidth);
     line-height: 100%;
     font-weight: 500;
     
@@ -335,11 +353,12 @@ h5 {
 .flow {
   grid-area: flow;
   display: grid;
-  margin-bottom: getP(280px, 1480px);
-  grid-template-columns: getP(354px, 1492px) auto;
+  // margin-bottom: getP(280px, 1480px);
+  grid-template-columns: getP(345px, $flowWidth)  auto getP(178px, $flowWidth);
   grid-template-areas:
-    '. title'
-    'steps steps';
+    '. title .'
+    'steps steps steps'
+    'steps steps steps';
 }
 
 .flow__title {
@@ -348,15 +367,28 @@ h5 {
   margin-bottom: getP(200px, 1480px);
 }
 
+.flow__steps-block{
+  margin-bottom: getP(350px - 34px , $flowWidth);
+}
+
 .steps-block {
   grid-area: steps;
   @include flex(row, wrap);
 }
 
+.flow__graphic-line{
+    /* position: absolute; */
+    grid-area: 3 / 2;
+    width: getVw(81px, $desktopWidth);
+    height: getVw(431px, $desktopWidth);
+    justify-self: end;
+    background: url(../img/slider.jpg)50% 50% / cover no-repeat;;
+}
+
 .steps-item {
   display: flex;
   width: 100%;
-  margin-bottom: 34px;
+  margin-bottom: getP(34px, $flowWidth);
   
   .steps-item__inner-wrapper {
     display: grid;
@@ -367,9 +399,9 @@ h5 {
       ". image ."
       "title index index"
       ". description .";
-    max-width: 700px;
+    width: getP(700px,$flowWidth);
     // width:getP(700px, 1480px);
-    min-width: 300px;
+    // min-width: 300px;
   }
   
   &:nth-of-type(2n+1) {
@@ -383,23 +415,20 @@ h5 {
 
 .steps-item__title {
   grid-area: title;
-  width: getP(230px, 700px);
+  width: getP(230px, 245px);
   
 }
 
 .steps-item__image {
   grid-area: image;
   justify-self: center;
-  width: 48%;
+  width: getP(200px,390px);
 }
 
 .steps-item__description {
   grid-area: description;
-  max-width: 400px;
+  // max-width: 400px;
   
-  .description__text {
-    // font-size: ;
-  }
 }
 
 .steps-item__index {
@@ -412,7 +441,7 @@ h5 {
   grid-area: team;
   display: grid;
   width: 100%;
-  grid-template-columns: getP(475px, $teamWidth) getP(924px, $teamWidth) 1fr;
+  grid-template-columns: getP(480px, $teamWidth) getP(924px, $teamWidth) 1fr;
 }
 
 .team__title {
@@ -426,8 +455,12 @@ h5 {
   @include flex(row, nowrap);
   
   & .description__text {
+    width:50%;
     &:first-of-type {
-      margin-right: getP(80px, 918px);
+      margin-right: getP(20px, 918px);
+    }
+    &:last-of-type {
+      margin-left: getP(20px, 918px);
     }
   }
 }
@@ -446,7 +479,7 @@ h5 {
   // width: 300px;
   text-transform: uppercase;
   font-weight: 400;
-  font-size: getVw(14px, 1920px);
+  font-size: getVw(14px, $desktopWidth);
   letter-spacing: .7em;
   
   &:after {
@@ -469,13 +502,13 @@ h5 {
 .members__inner-wrapper {
   
   @include flex(row, wrap);
-  margin: 0 getP(-40px, 1400px) 0px;
+  margin: 0 getP(-20px, 1400px) 0px;
   // margin-right: getP(-80px,1400px);
 }
 
 .members__members-item {
-  width: getColWidthInPercents(3, 40px, 1400px);
-  margin: 0 getP(40px, 1400px) getP(40px, 1400px);
+  width: getColWidthInPercents(3, 20px, 1400px);
+  margin: 0 getP(20px, 1400px) getP(40px, 1400px);
 }
 
 .members-item {
@@ -495,26 +528,28 @@ h5 {
       font-weight: 400;
     }
   }
-  
 }
 
 .page-footer {
   grid-area: page-footer;
   
   &__info-block {
-    @include flex(row, nowrap, space-between, center);
+   
+  }
+  &__offer-block {
+    width: getP(1440px, $desktopWidth);
   }
 }
 
 .button {
-  padding: 20px 30px;
+  padding: getVw(20px,$desktopWidth) getVw(30px,$desktopWidth);
   color: color(blue);
   background: none;
+  cursor: pointer;
 }
 
 .offer-block {
-  display: flex;
-  width: getP(1400px, 1840px);
+  @include flex(row, nowrap, null, stretch);
   
   &__column {
     width: 50%;
@@ -522,43 +557,82 @@ h5 {
   
   &__promo-block {
     @include flex (column, nowrap);
+    position: relative;
+    &::before{
+      position: absolute;
+      content:'';
+      top:0;
+      width:100%;
+      padding-top: getP(15px,700px);
+      background: color(black);
+    }
     
     & .offer-block__text {
-      max-width: 260px;
+      max-width: getP(260px,700px);
+      margin-top: getVw(65px,$desktopWidth);
+      margin-bottom: getP(134px,700px);
     }
     
     & .offer-block__button {
       align-self: flex-end;
-      // width: getP(280px, 700px);
-      max-width: 280px;
+      font-size: getVw(20px,$desktopWidth);
+      border: 1px solid color(blue);
     }
   }
   
   &__request-block {
-    
+    position: relative;
+    height:100%;
+    width:getP(480px,700px);
+     padding-left: getP(40px,700px);
     & .offer-block__text {
-      max-width: 440px;
-      margin-right: getP(20px, 700px);
+      max-width: getP(440px,480px);
+      margin-left: getP(20px,480px);
+      // margin-right: etP(40px, 400px);
+    }
+
+    &:before, &:after {
+      position: absolute;
+      content:'';
+      bottom:0;
+      width:50%;
+      background: color(black);
+    }
+    &:before{
+      left:0;
+      padding-top: getP(4px,700px);
+    }
+    &:after{
+      right:0;
+      padding-top: getP(17px,700px);
     }
   }
 }
 
+
+.info-block{
+  @include flex(row, nowrap, space-between, center);
+  padding: getP(45px,$desktopWidth) getP(40px,$desktopWidth);
+}
+
 .social-block {
-  @include flex(row, wrap);
+  @include flex(row, nowrap);
   align-items: center;
+  width:getP(290px,1840px);
   
   &__copyright {
-    margin-right: 10px;
+    margin-right: getP(10px,290px);
+    width:getP(140px,290px);
   }
 }
 
 .social-list {
-  @include flex(row, wrap);
-  
+  @include flex(row, nowrap);
+  width: getP(150px,290px);
   &__item {
     position: relative;
-    padding: 10px;
-    
+    padding: getP(10px,180px);
+    width: getP(60px,180px);
     &:before {
       content: '';
       position: absolute;
@@ -569,21 +643,28 @@ h5 {
       margin-top: -5px;
       background: color(black);
     }
+    & .social-link{
+      // width:;
+    }
   }
 }
 
-$social-names: ("be", 2px),
-("dribbble", -24px),
-("linkedin", -50px);
+$social-names: ("be", -2%),
+("dribbble", 54%),
+("linkedin", 107%);
 
 @each $item in $social-names {
   .social-link.#{nth($item, 1)} {
-    background: url('../img/social-icons.png') nth($item, 2) 0 no-repeat;
+    background: url('../img/social-icons.png') nth($item, 2) center/ auto 70% no-repeat;
     display: block;
-    width: 30px;
-    height: 22px;
+    width: 100%;
+    padding-top:100%;
+    // border:1px solid black;
+    cursor: pointer;
   }
 }
+
+
 
 
 @media(min-width: $desktopWidth) {

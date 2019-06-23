@@ -18,6 +18,7 @@ $secondaryFont: 'Myriad Pro',
 Helvetica,
 Arial,
 ;
+$offset:0px;
 //size
 $mainFontSize : 14px;
 $mainFontWeight: 300;
@@ -26,14 +27,15 @@ $menuFontSize : 13px;
 $menuFontWeight : 400;
 $menuLineHeight : 1.4;
 //conteiners' size
-$aboutWidth: 1470px;
-$capWidth: 1470px;
-$teamWidth: 1639px;
-$teamCardsWidth: 1400px;
+$aboutWidth: 1481px - $offset;
+$capWidth: 1840px - $offset;
+$flowWidth: 1523px - $offset;
+$teamWidth: 1639px - $offset;
+$teamCardsWidth: 1400px - $offset;
 // $flowWidth:
 //screen size
-$desktopWidth : 1920px;
-$smDesktopWidth : 980px;
-$tabletWidth : 700px;
-$phoneWidth : 480px;
-$smPhoneWidth : 320px;
+$desktopWidth : 1920px - $offset;
+$smDesktopWidth : 980px - $offset;
+$tabletWidth : 700px - $offset;
+$phoneWidth : 480px - $offset;
+$smPhoneWidth : 320px - $offset;
