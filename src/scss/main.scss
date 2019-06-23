@@ -665,22 +665,6 @@ $social-names: ("be", -2%),
 }
 
 
-
-
-@media(min-width: $desktopWidth) {
-  .page-slider__description {
-    font-size: 525px;
-  }
-  
-  .about__graphic-line {
-    height: 212px;
-  }
-  
-  .about {
-    grid-template-rows: auto auto auto getVw(150px, $desktopWidth);
-  }
-}
-
 @media(min-width: $tabletWidth) {
   .accardion-menu-button {
     display: none;
@@ -692,3 +676,129 @@ $social-names: ("be", -2%),
 }
 
 @media (min-width: $phoneWidth) {}
+
+
+//DESKTOP------------------------------------
+@media(min-width: $desktopWidth) {
+  //-------------------------------------------------
+  .page-slider__description {
+    font-size: 525px;
+  }
+  
+  .about__graphic-line {
+    height: 212px;
+  }
+  
+  .about {
+    grid-template-rows: auto auto auto getVw(150px, $desktopWidth);
+  }
+  //-------------------------------------------------
+  //==
+  p {
+    font-size:19px;
+  }
+  
+  h2 {
+    font-size: 92px;
+  }
+  
+  h4 {
+    font-size: 33px;
+  }
+  
+  h5 {
+    font-size: 22px;
+  }
+  
+  
+  .page-wrapper {
+    grid-template-columns: 35px auto 35px;
+  }
+
+  //?
+  .page-header {
+    padding: 18px 0;
+  }
+  
+  .page-content {
+    //?
+    grid-template-columns: 40px 135px 1346px  180px 180px 40px;
+  }
+ 
+  .page-slider__description {
+    font-size: 525px;
+  }
+  
+  .about {
+    grid-template-rows: auto auto auto 150px;
+    top: -20px;
+    //?
+    // margin-bottom:50px;
+  }
+    
+  .about__graphic-line {
+    height: 212px;
+  }
+  
+  .capabilities {
+     grid-template-rows: auto auto auto 150px;
+  }
+  
+  .capabilities__graphic-line {
+    height: 656px;
+  }
+  
+  .capabilities__graphic-line-2 {
+    width: 40px;
+    height: 790px;
+  }
+ 
+  .capabilities__description_em {
+    & p {
+      font-size: 28px;
+    }
+  }
+  
+  .types {
+    &__title {
+      font-size: 19px;
+    }
+    
+    &__list-item {
+      font-size: 33px;
+    }
+  }
+ 
+  .flow__graphic-line{
+      width: 81px;
+      height:431px;
+  }
+
+  
+  .members-block__title {
+
+    font-size: 14px;
+
+  }
+
+  .button {
+    padding:20px 30px;
+  }
+  
+  .offer-block {
+    
+    &__promo-block {
+
+      & .offer-block__text {
+        margin-top: 65px;
+      }
+      
+      & .offer-block__button {
+        font-size:20px;
+      }
+    }
+  }
+ 
+  //==
+}
+
