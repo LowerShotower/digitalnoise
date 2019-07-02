@@ -11,6 +11,14 @@ html {
   @include define-type-sizing;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  scrollbar-width: none;
+}
+
 p,
 h2,
 h3,
@@ -20,32 +28,37 @@ h5 {
 }
 
 p {
-  font-size: getVw(19px, $desktopWidth);
-  line-height: 160%;
+  // font-size: getVw(19px, $desktopWidth);
+  font-size: 19px;
+  line-height: 170%;
 }
 
 h2 {
   @include typeset(header-main);
-  font-size: getVw(92px, $desktopWidth);
+  // font-size: getVw(92px, $desktopWidth);
+  font-size: 92px;
   line-height: 100%;
+  letter-spacing: -2.9px;
 }
 
 h4 {
   font-weight: 500;
-  font-size: getVw(33px, $desktopWidth);
+  // font-size: getVw(33px, $desktopWidth);
+  font-size: 33px;
   line-height: 100%;
 }
 
 h5 {
   @include typeset(header-main);
-  font-size: getVw(22px, $desktopWidth);
+  // font-size: getVw(22px, $desktopWidth);
+  font-size: 22px;
   line-height: 100%;
 }
 
 
 .page-wrapper {
   display: grid;
-  grid-template-columns: getVw(35px, $desktopWidth) auto getVw(35px, $desktopWidth);
+  grid-template-columns: getVw(40px, $desktopWidth) auto getVw(40px, $desktopWidth);
   grid-template-rows: auto;
   grid-template-areas:
     ". page-header ."
@@ -65,11 +78,12 @@ h5 {
   grid-area: page-content;
   display: grid;
   width: 100%;
-  grid-template-columns: getP(40px, $desktopWidth) getP(135px, $desktopWidth) getP(1481px - 135px, $desktopWidth) getP(180px, $desktopWidth) getP(180px, $desktopWidth) getP(40px, $desktopWidth) ;
+  // grid-template-columns: getP(40px, $desktopWidth) getP(135px, $desktopWidth) getP(1481px - 135px, $desktopWidth) getP(180px, $desktopWidth) getP(180px, $desktopWidth) getP(40px, $desktopWidth);
+  grid-template-columns: 40px 135px minmax(auto, 1346px) 1fr 1fr 40px;
   // grid-template-rows: auto auto 134px auto auto;
   grid-template-areas:
     " page-slider page-slider page-slider page-slider page-slider  ."
-    ". about about  . . ."
+    "about about about  . . ."
     ". . . . .  ."
     ". capabilities capabilities  capabilities capabilities  ."
     ". . flow flow   . ."
@@ -149,8 +163,8 @@ h5 {
   @include typeset(nav);
   display: none;
   
-  & .nav-item {
-    padding: 0px 16px;
+  &__nav-item {
+    padding: 0px 15px;
     
     &:first-of-type {
       padding-left: 0;
@@ -160,7 +174,10 @@ h5 {
       padding-right: 0;
     }
     
-    &-link {
+    .nav-item-link {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0;
       color: color(nav-link);
       
       &:hover {
@@ -193,7 +210,9 @@ h5 {
 
 .page-slider__description {
   position: absolute;
-  top: 50%;
+  top: 42.1%;
+  left: -0.7%;
+  letter-spacing: 2px;
   @include typeface(avenir);
   @include typeset(header-xxxl);
   text-transform: uppercase;
@@ -205,41 +224,51 @@ h5 {
 .about {
   grid-area: about;
   display: grid;
-  grid-template-columns: getP(76px, $aboutWidth) getP(480px - 76px, $aboutWidth) getP(481px, $aboutWidth) getP(440px, $aboutWidth) getP(81px, $aboutWidth);
-  grid-template-rows: auto auto auto getVw(150px, $desktopWidth);
+  // grid-template-columns: getP(40px, $aboutWidth) getP(76px, $aboutWidth) getP(480px - 76px, $aboutWidth) getP(481px, $aboutWidth) getP(440px, $aboutWidth) getP(81px, $aboutWidth);
+  grid-template-columns: getP(40px, $aboutWidth) getP(76px, $aboutWidth) minmax(50px,1fr) minmax(auto,481px) minmax(auto,440px) getP(81px, $aboutWidth);
+  grid-template-rows: 118.1px auto auto getVw(150px, $desktopWidth);
   grid-auto-rows: minmax(10px, auto);
   background: color(white);
   position: relative;
-  top: getVw(-20px,$desktopWidth);
+  max-width: 1521px;
+  top: getVw(-20px, $desktopWidth);
   margin-bottom: (50px, $desktopWidth);
 }
 
 .about__title_size_small {
-  grid-area: 1/4/2/6;
+  grid-area: 1/5/2/7;
   justify-self: end;
-  padding:  getP(20px, $aboutWidth)  getP(30px, $aboutWidth);
-  margin-bottom: getP(155px, 521px );
+  // padding:  getP(20px, $aboutWidth)  getP(30px, $aboutWidth);
+  padding: 2.75044% 6.52566%;
+  // margin-bottom: getP(155px, 521px );
+  letter-spacing: -2px;
   
 }
 
 .about__graphic-dot {
-  grid-area: 2/1/3/2;
+  grid-area: 2/2/3/3;
   width: 100%;
+  margin-top: 15px;
 }
 
 .about__title_type_main {
-  grid-area: 2/3/3/4;
-  margin-bottom: getP(140px, 480px);
+  grid-area: 2/4/3/5;
+  // margin-bottom: getP(140px, 480px);
+  margin-bottom: 25.16667%;
 }
 
 .about__description {
-  grid-area: 3/3/4/5;
-  @include flex(row, nowrap);
-  width:100%;
+  grid-area: 3/4/4/6;
+  @include flex(row, wrap);
+  width: 100%;
   justify-content: space-between;
-  & .description__text{
-    width:getP(440px, 921px);
+  
+  & .description__text {
+    // width: getP(440px, 921px);
+    width: 440px;
+    margin-bottom: 20px;
   }
+  
   & .description__text:first-of-type {
     padding-right: getP(70px, 921px);
   }
@@ -249,26 +278,30 @@ h5 {
 }
 
 .about__graphic-line {
-  grid-area: 5/1/6/5;
+  grid-area: 5/2/6/6;
   background: url(../img/graphic-line.png) 0 0 / cover no-repeat;
   height: getVw(212px, $desktopWidth);
   margin-bottom: getP(145px, $aboutWidth);
-  width:getP(1180px,1481px);
+  // width:getP(1180px,$aboutWidth);
+  width: 85%;
 }
 
 .capabilities {
   grid-area: capabilities;
   display: grid;
   position: relative;
-  grid-template-columns:  getP(480px, $capWidth) getP(221px, $capWidth) getP(480px, $capWidth) getP(220px, $capWidth) getP(81px, $capWidth) getP(360px, $capWidth) ;
+  // grid-template-columns: getP(480px, $capWidth) getP(221px, $capWidth) getP(480px, $capWidth) getP(220px, $capWidth) getP(81px, $capWidth) getP(360px, $capWidth);
+  grid-template-columns: minmax(45px,480px) minmax(auto,221px) minmax(auto,480px) minmax(auto,220px) getP(81px, $capWidth) minmax(auto,1fr);
   grid-template-rows: auto auto auto getVw(150px, $desktopWidth);
   grid-auto-rows: minmax(10px, auto);
-  margin-bottom: getP(200px, 1480px);
+  // margin-bottom: getP(200px, 1480px);
+  margin-bottom: 11.21351%;
 }
 
 .capabilities__title {
   grid-area: 1/2/2/4;
-  margin-bottom: getP(215px, 701px);
+  // margin-bottom: getP(215px, 701px);
+  margin-bottom: 26.67047%;
 }
 
 .capabilities__graphic-line {
@@ -280,12 +313,13 @@ h5 {
 .capabilities__graphic-line-2 {
   position: absolute;
   right: 100%;
-  width: getVw(40px,$desktopWidth);
+  width: getVw(40px, $desktopWidth);
   grid-area: 5/1/6/2;
-  height: getVw(790px,$desktopWidth);
+  height: getVw(790px, $desktopWidth);
+  
   & img {
     object-fit: cover;
-    height:100%;
+    height: 100%;
   }
 }
 
@@ -295,7 +329,19 @@ h5 {
   max-width: getP(570px, 700px);
   
   & .description__text {
-    margin-bottom: getP(80px, 590px);
+    // margin-bottom: getP(80px, 590px);
+    margin-bottom: 17.55932%;
+    position: relative;
+    
+    &:first-of-type::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -19%;
+      width: 52px;
+      height: 14px;
+      background: color(black);
+    }
     
     &:last-of-type {
       margin-bottom: 0;
@@ -304,47 +350,56 @@ h5 {
 }
 
 .capabilities__description_em {
-  grid-area: 2/1/3/2;
-  max-width: 473px;
+  grid-area: 2/1/3/3;
+  max-width: 500px;
   font-style: italic;
   line-height: 160%;
   
   & p {
-    font-size: getVw(28px, $desktopWidth);
+    // font-size: getVw(28px, $desktopWidth);
+    font-size: 28px;
+    letter-spacing: 0.6px;
+    left: 3px;
   }
 }
 
 .capabilities__types {
   grid-area: 2/3/6/4;
   max-width: 480px;
-  margin-bottom: getP(200px, 700px);
+  // margin-bottom: getP(200px, 700px);
+  margin-bottom: 34.57143%;
 }
 
 .types {
   &__title {
     text-transform: uppercase;
     font-size: getVw(19px, $desktopWidth);
+    font-size: 19px;
     line-height: 200%;
-    letter-spacing: 1em;
-    margin-bottom: getP(140px, 700px);
+    letter-spacing: 0.9em;
+    // margin-bottom: getP(140px, 700px);
+    margin-bottom: 27%;
   }
   
   &__list-item {
     position: relative;
     @include flex(row, nowrap);
-    margin-bottom: getP(40px, 700px);
+    // margin-bottom: getP(40px, 700px);
+    margin-bottom: 6.51429%;
     @include typeface(avenir);
-    font-size: getVw(33px, $desktopWidth);
+    // font-size: getVw(33px, $desktopWidth);
+    font-size: 33px;
     line-height: 100%;
     font-weight: 500;
     
     &::before {
       content: '';
       position: relative;
-      margin-right: getP(34px, 700px);
+      // margin-right: getP(34px, 700px);
+      margin-right: 6.45714%;
       width: getP(19px, 424px);
       // padding-top:getP(28px,424px);
-      background: url(../img/plus.png) 0 0 / contain no-repeat;
+      background: url(../img/plus.png) 0 32% / contain no-repeat;
     }
   }
 }
@@ -354,7 +409,7 @@ h5 {
   grid-area: flow;
   display: grid;
   // margin-bottom: getP(280px, 1480px);
-  grid-template-columns: getP(345px, $flowWidth)  auto getP(178px, $flowWidth);
+  grid-template-columns: getP(345px, $flowWidth) auto getP(178px, $flowWidth);
   grid-template-areas:
     '. title .'
     'steps steps steps'
@@ -363,12 +418,13 @@ h5 {
 
 .flow__title {
   grid-area: title;
-  width: getP(840px, 1150px);
+  // width: getP(840px, 1150px);
+  width: 83.04348%;
   margin-bottom: getP(200px, 1480px);
 }
 
-.flow__steps-block{
-  margin-bottom: getP(350px - 34px , $flowWidth);
+.flow__steps-block {
+  margin-bottom: getP(350px - 34px, $flowWidth);
 }
 
 .steps-block {
@@ -376,13 +432,14 @@ h5 {
   @include flex(row, wrap);
 }
 
-.flow__graphic-line{
-    /* position: absolute; */
-    grid-area: 3 / 2;
-    width: getVw(81px, $desktopWidth);
-    height: getVw(431px, $desktopWidth);
-    justify-self: end;
-    background: url(../img/slider.jpg)50% 50% / cover no-repeat;;
+.flow__graphic-line {
+  /* position: absolute; */
+  grid-area: 3 / 2;
+  width: getVw(81px, $desktopWidth);
+  height: getVw(431px, $desktopWidth);
+  justify-self: end;
+  background: url(../img/slider.jpg)50% 50% / cover no-repeat;
+  ;
 }
 
 .steps-item {
@@ -399,7 +456,7 @@ h5 {
       ". image ."
       "title index index"
       ". description .";
-    width: getP(700px,$flowWidth);
+    width: getP(700px, $flowWidth);
     // width:getP(700px, 1480px);
     // min-width: 300px;
   }
@@ -422,7 +479,7 @@ h5 {
 .steps-item__image {
   grid-area: image;
   justify-self: center;
-  width: getP(200px,390px);
+  width: getP(200px, 390px);
 }
 
 .steps-item__description {
@@ -455,10 +512,12 @@ h5 {
   @include flex(row, nowrap);
   
   & .description__text {
-    width:50%;
+    width: 50%;
+    
     &:first-of-type {
       margin-right: getP(20px, 918px);
     }
+    
     &:last-of-type {
       margin-left: getP(20px, 918px);
     }
@@ -479,7 +538,8 @@ h5 {
   // width: 300px;
   text-transform: uppercase;
   font-weight: 400;
-  font-size: getVw(14px, $desktopWidth);
+  // font-size: getVw(14px, $desktopWidth);
+  font-size: 14px;
   letter-spacing: .7em;
   
   &:after {
@@ -533,16 +593,15 @@ h5 {
 .page-footer {
   grid-area: page-footer;
   
-  &__info-block {
-   
-  }
+  &__info-block {}
+  
   &__offer-block {
     width: getP(1440px, $desktopWidth);
   }
 }
 
 .button {
-  padding: getVw(20px,$desktopWidth) getVw(30px,$desktopWidth);
+  padding: getVw(20px, $desktopWidth) getVw(30px, $desktopWidth);
   color: color(blue);
   background: none;
   cursor: pointer;
@@ -558,81 +617,89 @@ h5 {
   &__promo-block {
     @include flex (column, nowrap);
     position: relative;
-    &::before{
+    
+    &::before {
       position: absolute;
-      content:'';
-      top:0;
-      width:100%;
-      padding-top: getP(15px,700px);
+      content: '';
+      top: 0;
+      width: 100%;
+      padding-top: getP(15px, 700px);
       background: color(black);
     }
     
     & .offer-block__text {
-      max-width: getP(260px,700px);
-      margin-top: getVw(65px,$desktopWidth);
-      margin-bottom: getP(134px,700px);
+      max-width: getP(260px, 700px);
+      margin-top: getVw(65px, $desktopWidth);
+      margin-bottom: getP(134px, 700px);
     }
     
     & .offer-block__button {
       align-self: flex-end;
-      font-size: getVw(20px,$desktopWidth);
+      // font-size: getVw(20px, $desktopWidth);
+      font-size: 20px;
       border: 1px solid color(blue);
     }
   }
   
   &__request-block {
     position: relative;
-    height:100%;
-    width:getP(480px,700px);
-     padding-left: getP(40px,700px);
+    height: 100%;
+    width: getP(480px, 700px);
+    padding-left: getP(40px, 700px);
+    
     & .offer-block__text {
-      max-width: getP(440px,480px);
-      margin-left: getP(20px,480px);
+      max-width: getP(440px, 480px);
+      margin-left: getP(20px, 480px);
       // margin-right: etP(40px, 400px);
     }
-
-    &:before, &:after {
+    
+    &:before,
+    &:after {
       position: absolute;
-      content:'';
-      bottom:0;
-      width:50%;
+      content: '';
+      bottom: 0;
+      width: 50%;
       background: color(black);
     }
-    &:before{
-      left:0;
-      padding-top: getP(4px,700px);
+    
+    &:before {
+      left: 0;
+      padding-top: getP(4px, 700px);
     }
-    &:after{
-      right:0;
-      padding-top: getP(17px,700px);
+    
+    &:after {
+      right: 0;
+      padding-top: getP(17px, 700px);
     }
   }
 }
 
 
-.info-block{
+.info-block {
   @include flex(row, nowrap, space-between, center);
-  padding: getP(45px,$desktopWidth) getP(40px,$desktopWidth);
+  padding: getP(45px, $desktopWidth) getP(40px, $desktopWidth);
 }
 
 .social-block {
   @include flex(row, nowrap);
   align-items: center;
-  width:getP(290px,1840px);
+  width: getP(290px, 1840px);
   
   &__copyright {
-    margin-right: getP(10px,290px);
-    width:getP(140px,290px);
+    margin-right: getP(10px, 290px);
+    width: getP(140px, 290px);
   }
 }
 
 .social-list {
   @include flex(row, nowrap);
-  width: getP(150px,290px);
+  width: getP(150px, 290px);
+  
   &__item {
     position: relative;
-    padding: getP(10px,180px);
-    width: getP(60px,180px);
+    padding: getP(10px, 180px);
+    width: getP(60px, 180px);
+    
     &:before {
       content: '';
       position: absolute;
@@ -643,7 +710,8 @@ h5 {
       margin-top: -5px;
       background: color(black);
     }
-    & .social-link{
+    
+    & .social-link {
       // width:;
     }
   }
@@ -658,9 +726,62 @@ $social-names: ("be", -2%),
     background: url('../img/social-icons.png') nth($item, 2) center/ auto 70% no-repeat;
     display: block;
     width: 100%;
-    padding-top:100%;
+    padding-top: 100%;
     // border:1px solid black;
     cursor: pointer;
+  }
+}
+
+
+
+@media (max-width: $phoneWidth) {
+  
+  .page-content {
+    grid-template-areas:
+      " page-slider page-slider page-slider page-slider page-slider  ."
+      "about about about  . . ."
+      ". . . . .  ."
+      ". capabilities capabilities  capabilities capabilities  ."
+      ". . flow flow   . ."
+      ". team team team team . ";
+  }
+  
+  .team__description {
+    flex-direction: column;
+    grid-area: 2/2/3/4;
+    margin-bottom: auto;
+    
+    & .description__text {
+      margin: 0 30px 30px;
+      width: auto;
+      
+      &:first-of-type,
+      &:last-of-type {
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+  }
+  
+  .members__members-item {
+    width: getColWidthInPercents(1, 20px, 1400px);
+    margin: 0 getP(20px, 1400px) getP(40px, 1400px);
+  }
+  
+  .members-block__title {
+    transform: none;
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 10px;
+    
+    &:after {
+      display: none;
+    }
+  }
+  
+  .members-block__members {
+    width: 100%;
   }
 }
 
@@ -675,11 +796,10 @@ $social-names: ("be", -2%),
   }
 }
 
-@media (min-width: $phoneWidth) {}
-
 
 //DESKTOP------------------------------------
 @media(min-width: $desktopWidth) {
+  
   //-------------------------------------------------
   .page-slider__description {
     font-size: 525px;
@@ -692,10 +812,11 @@ $social-names: ("be", -2%),
   .about {
     grid-template-rows: auto auto auto getVw(150px, $desktopWidth);
   }
+  
   //-------------------------------------------------
   //==
   p {
-    font-size:19px;
+    font-size: 19px;
   }
   
   h2 {
@@ -712,36 +833,51 @@ $social-names: ("be", -2%),
   
   
   .page-wrapper {
-    grid-template-columns: 35px auto 35px;
+    grid-template-columns: 40px auto 40px;
   }
-
+  
   //?
   .page-header {
-    padding: 18px 0;
+    padding: 16px 0;
   }
   
   .page-content {
     //?
-    grid-template-columns: 40px 135px 1346px  180px 180px 40px;
+    grid-template-columns: 40px 135px 1346px 180px 180px 40px;
   }
- 
+  
   .page-slider__description {
     font-size: 525px;
   }
   
   .about {
-    grid-template-rows: auto auto auto 150px;
-    top: -20px;
+    grid-template-rows: 118.1px auto auto 120px;
+    top: 0;
+    margin-top: -20px;
     //?
     // margin-bottom:50px;
   }
-    
+  
   .about__graphic-line {
     height: 212px;
   }
   
+  .graphic-blue-line {
+    display: block;
+    width: 690px;
+    right: -16.3%;
+    top: 30%;
+    height: 2px;
+    position: absolute;
+    background: color(blue);
+    
+    transform: rotate(22.5deg);
+  }
+  
+  .about__graphic-blue-line {}
+  
   .capabilities {
-     grid-template-rows: auto auto auto 150px;
+    grid-template-rows: auto auto auto 150px;
   }
   
   .capabilities__graphic-line {
@@ -752,7 +888,7 @@ $social-names: ("be", -2%),
     width: 40px;
     height: 790px;
   }
- 
+  
   .capabilities__description_em {
     & p {
       font-size: 28px;
@@ -768,37 +904,36 @@ $social-names: ("be", -2%),
       font-size: 33px;
     }
   }
- 
-  .flow__graphic-line{
-      width: 81px;
-      height:431px;
+  
+  .flow__graphic-line {
+    width: 81px;
+    height: 431px;
   }
-
+  
   
   .members-block__title {
-
+    
     font-size: 14px;
-
+    
   }
-
+  
   .button {
-    padding:20px 30px;
+    padding: 20px 30px;
   }
   
   .offer-block {
     
     &__promo-block {
-
+      
       & .offer-block__text {
         margin-top: 65px;
       }
       
       & .offer-block__button {
-        font-size:20px;
+        font-size: 20px;
       }
     }
   }
- 
+  
   //==
 }
-
