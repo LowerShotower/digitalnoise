@@ -58,7 +58,8 @@ h5 {
 
 .page-wrapper {
   display: grid;
-  grid-template-columns: getVw(40px, $desktopWidth) auto getVw(40px, $desktopWidth);
+  // grid-template-columns: getVw(40px, $desktopWidth) auto getVw(40px, $desktopWidth);
+  grid-template-columns: 40px auto 40px;
   grid-template-rows: auto;
   grid-template-areas:
     ". page-header ."
@@ -79,7 +80,7 @@ h5 {
   display: grid;
   width: 100%;
   // grid-template-columns: getP(40px, $desktopWidth) getP(135px, $desktopWidth) getP(1481px - 135px, $desktopWidth) getP(180px, $desktopWidth) getP(180px, $desktopWidth) getP(40px, $desktopWidth);
-  grid-template-columns: 40px 135px minmax(auto, 1346px) 1fr 1fr 40px;
+  grid-template-columns: 40px 135px minmax(auto, 1346px) minmax(20px, 1fr) minmax(20px, 1fr) 40px;
   // grid-template-rows: auto auto 134px auto auto;
   grid-template-areas:
     " page-slider page-slider page-slider page-slider page-slider  ."
@@ -175,7 +176,7 @@ h5 {
     }
     
     .nav-item-link {
-      font-weight: 700;
+      font-weight: 500;
       font-size: 18px;
       letter-spacing: 0;
       color: color(nav-link);
@@ -225,7 +226,7 @@ h5 {
   grid-area: about;
   display: grid;
   // grid-template-columns: getP(40px, $aboutWidth) getP(76px, $aboutWidth) getP(480px - 76px, $aboutWidth) getP(481px, $aboutWidth) getP(440px, $aboutWidth) getP(81px, $aboutWidth);
-  grid-template-columns: getP(40px, $aboutWidth) getP(76px, $aboutWidth) minmax(50px,1fr) minmax(auto,481px) minmax(auto,440px) getP(81px, $aboutWidth);
+  grid-template-columns: getP(40px, $aboutWidth) getP(76px, $aboutWidth) minmax(50px, 1fr) minmax(auto, 481px) minmax(auto, 440px) getP(81px, $aboutWidth);
   grid-template-rows: 118.1px auto auto getVw(150px, $desktopWidth);
   grid-auto-rows: minmax(10px, auto);
   background: color(white);
@@ -241,7 +242,7 @@ h5 {
   // padding:  getP(20px, $aboutWidth)  getP(30px, $aboutWidth);
   padding: 2.75044% 6.52566%;
   // margin-bottom: getP(155px, 521px );
-  letter-spacing: -2px;
+  letter-spacing: -0.5px;
   
 }
 
@@ -273,14 +274,14 @@ h5 {
     padding-right: getP(70px, 921px);
   }
   
-  & .description__text:last-of-type {
-  }
+  & .description__text:last-of-type {}
 }
 
 .about__graphic-line {
   grid-area: 5/2/6/6;
   background: url(../img/graphic-line.png) 0 0 / cover no-repeat;
-  height: getVw(212px, $desktopWidth);
+  // height: getVw(212px, $desktopWidth);
+  height: 150px;
   margin-bottom: getP(145px, $aboutWidth);
   // width:getP(1180px,$aboutWidth);
   width: 85%;
@@ -291,23 +292,26 @@ h5 {
   display: grid;
   position: relative;
   // grid-template-columns: getP(480px, $capWidth) getP(221px, $capWidth) getP(480px, $capWidth) getP(220px, $capWidth) getP(81px, $capWidth) getP(360px, $capWidth);
-  grid-template-columns: minmax(45px,480px) minmax(auto,221px) minmax(auto,480px) minmax(auto,220px) getP(81px, $capWidth) minmax(auto,1fr);
+  grid-template-columns: minmax(45px, 480px) minmax(auto, 221px) minmax(414px, 480px) minmax(auto, 220px) 81px minmax(auto, 1fr);
   grid-template-rows: auto auto auto getVw(150px, $desktopWidth);
   grid-auto-rows: minmax(10px, auto);
   // margin-bottom: getP(200px, 1480px);
   margin-bottom: 11.21351%;
+  margin-bottom: 260px;
 }
 
 .capabilities__title {
   grid-area: 1/2/2/4;
   // margin-bottom: getP(215px, 701px);
   margin-bottom: 26.67047%;
+  
 }
 
 .capabilities__graphic-line {
   grid-area: 1/5/5/6;
   background: url(../img/graphic-line2.png) 0 0 / contain no-repeat;
-  height: getVw(656px, $desktopWidth);
+  // height: getVw(656px, $desktopWidth);
+  width: 100%;
 }
 
 .capabilities__graphic-line-2 {
@@ -337,7 +341,8 @@ h5 {
       content: '';
       display: block;
       position: absolute;
-      bottom: -19%;
+      // bottom: -19%;
+      bottom: -40px;
       width: 52px;
       height: 14px;
       background: color(black);
@@ -354,6 +359,7 @@ h5 {
   max-width: 500px;
   font-style: italic;
   line-height: 160%;
+  margin-right: 40px;
   
   & p {
     // font-size: getVw(28px, $desktopWidth);
@@ -409,9 +415,10 @@ h5 {
   grid-area: flow;
   display: grid;
   // margin-bottom: getP(280px, 1480px);
-  grid-template-columns: getP(345px, $flowWidth) auto getP(178px, $flowWidth);
+  // grid-template-columns: getP(345px, $flowWidth) auto getP(178px, $flowWidth);
+  grid-template-columns: minmax(0, 345px) auto minmax(0, 178px);
   grid-template-areas:
-    '. title .'
+    'title title title '
     'steps steps steps'
     'steps steps steps';
 }
@@ -419,8 +426,10 @@ h5 {
 .flow__title {
   grid-area: title;
   // width: getP(840px, 1150px);
-  width: 83.04348%;
-  margin-bottom: getP(200px, 1480px);
+  // width: 83.04348%;
+  max-width: 840px;
+  // margin-bottom: getP(200px, 1480px);
+  margin-bottom: 200px;
 }
 
 .flow__steps-block {
@@ -456,7 +465,8 @@ h5 {
       ". image ."
       "title index index"
       ". description .";
-    width: getP(700px, $flowWidth);
+    // width: getP(700px, $flowWidth);
+    max-width: 700px;
     // width:getP(700px, 1480px);
     // min-width: 300px;
   }
@@ -498,21 +508,25 @@ h5 {
   grid-area: team;
   display: grid;
   width: 100%;
-  grid-template-columns: getP(480px, $teamWidth) getP(924px, $teamWidth) 1fr;
+  // grid-template-columns: getP(480px, $teamWidth) getP(924px, $teamWidth) 1fr;
+  grid-template-columns: minmax(auto,480px) minmax(auto, 924px) 1fr;
 }
 
 .team__title {
   grid-area: 1/2/2/3;
-  margin-bottom: getP(130px, $teamWidth);
+  // margin-bottom: getP(130px, $teamWidth);
+  margin-bottom: 130px;
 }
 
 .team__description {
   grid-area: 2/2/3/3;
-  margin-bottom: getP(130px, $teamWidth);
+  // margin-bottom: getP(130px, $teamWidth);
+  margin-bottom: 70px;
   @include flex(row, nowrap);
   
   & .description__text {
-    width: 50%;
+    width: 440px;
+    margin-bottom: 50px;
     
     &:first-of-type {
       margin-right: getP(20px, 918px);
@@ -628,7 +642,8 @@ h5 {
     }
     
     & .offer-block__text {
-      max-width: getP(260px, 700px);
+      // max-width: getP(260px, 700px);
+      max-width: 260px;
       margin-top: getVw(65px, $desktopWidth);
       margin-bottom: getP(134px, 700px);
     }
@@ -644,7 +659,8 @@ h5 {
   &__request-block {
     position: relative;
     height: 100%;
-    width: getP(480px, 700px);
+    // width: getP(480px, 700px);
+    max-width:480px;
     padding-left: getP(40px, 700px);
     
     & .offer-block__text {
@@ -936,4 +952,59 @@ $social-names: ("be", -2%),
   }
   
   //==
+}
+
+@media(max-width:1440px) {}
+
+@media(max-width:1280px) {
+  .capabilities__description_em {
+    margin-right: 50px;
+  }
+  
+  .flow__graphic-line{
+    display: none;
+  }
+  
+}
+
+@media(max-width:1024px) {
+  .capabilities__description_em {
+    grid-area: 2/1/3/4;
+    margin-right: 50px;
+    margin-bottom: 70px;
+  }
+  
+  .capabilities__types {
+    grid-area: 3/3/6/3;
+    max-width: 480px;
+    margin-bottom: 34.57143%;
+  }
+  
+  .team__description {
+    flex-wrap: wrap;
+    
+    & .description__text {
+      
+      &:first-of-type {
+        margin-right: 0;
+      }
+      
+      &:last-of-type {
+        margin-left: 0;
+      }
+    }
+  }
+  .members__members-item {
+    width: getColWidthInPercents(2, 20px, 1400px);
+    margin: 0 getP(20px, 1400px) getP(40px, 1400px);
+  }
+  
+}
+
+@media(max-width:768px) {
+  .members__members-item {
+    width: getColWidthInPercents(1, 20px, 1400px);
+    margin: 0 getP(20px, 1400px) getP(40px, 1400px);
+  }
+  
 }
